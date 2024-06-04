@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <a href="{% url 'index_page' %}">index</a>
+    <form action="/edit" method="POST">
+        {% csrf_token %}
+        <p3>Редкатировать категорию</p3>
+        <div>
+            <input value="{{ cat.id }} " style="display: none" type="text" name="cat_id" placeholder="id категории">
+        </div>
+        <div>
+            <input value="{{ cat.name }} " type="text" name="cat_name" placeholder="имя категории">
+        </div>
+        <button>Сохранить</button>
+    </form>
+</body>
+</html>
+

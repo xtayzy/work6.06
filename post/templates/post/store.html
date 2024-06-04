@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<a href="{% url 'index_page' %}">index</a>
+
+    <div>
+        {% for item in store %}
+                <p>{{item.name}}</p>
+                <a href="{% url 'categories_page' store_id=item.id %}">Категории</a>
+        {% endfor %}
+    </div>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div>
+    <h2>Поиск</h2>
+    <form action="">
+        <input type="text" name="search">
+        <button>Найти</button>
+    </form>
+</div>
+
+<form action="" method="post">
+    {% csrf_token %}
+    <input type="text" name="store_name">
+    <button>Сохранить</button>
+</form>
+
+<div>
+    {% for item in store %}
+        <a href="{% url 'store_page' id=item.id %}">
+            <p>{{item.id}} {{item.name}}</p>
+        </a>
+    {% endfor %}
+</div>
+</body>
+</html>
+

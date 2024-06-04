@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<a href="{% url 'index_page' %}">index</a>
+    <form action="/pr_edit" method="POST">
+        {% csrf_token %}
+            <p3>Редкатировать продукт</p3>
+            <div>
+                <input value="{{ pr.id }} " style="display: none" type="text" name="pr_id" placeholder="id продукта">
+            </div>
+            <div>
+                <input value="{{ pr.name }} " type="text" name="pr_name" placeholder="имя продукта">
+            </div>
+            <div>
+                <input value="{{ pr.price }} " type="text" name="pr_price" placeholder="цена продукта">
+            </div>
+            <div>
+                <input value="{{ pr.category.id }} " type="text" name="cat_id" placeholder="id категории">
+                {% for cat in cats %}
+                <div style="display: flex; flex-direction: column" >
+                    {{ cat.id }} - {{ cat.name }}
+                </div>
+                {% endfor %}
+            </div>
+            <button>Сохранить</button>
+    </form>
+</body>
+</html>

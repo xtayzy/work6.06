@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <a href="{% url 'index_page' %}">index</a>
+
+    <div>
+    <form action="/add_cat" method="POST">
+        {% csrf_token %}
+        <p3>Добавить категорию</p3>
+        <div>
+            <input type="text" name="cat_name" placeholder="имя категории">
+        </div>
+        <button>Сохранить</button>
+    </form>
+    </div>
+
+
+    <div>
+        {% for item in store %}
+                <p>{{item.name}}</p>
+
+        {% for cat in cat %}
+            <div>
+                <a href="{% url 'products_page' store_id=item.id cat_id=cat.id %}">{{ cat.name }}</a>
+                <a href="{% url 'dell_cat' id=cat.id %}">Удалить</a>
+                <a href="{% url 'edit_page' id=cat.id %}">Редактировать</a>
+            </div>
+        {% endfor %}
+        {% endfor %}
+    </div>
+</body>
+</html>
